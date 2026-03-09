@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Code Reviewer</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    text-align:center;
+}
+
+.container{
+    width:70%;
+    margin:auto;
+    background:white;
+    padding:20px;
+    margin-top:50px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+textarea{
+    width:100%;
+    height:200px;
+    padding:10px;
+    font-family:monospace;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    font-size:16px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+#result{
+    margin-top:20px;
+    background:#eee;
+    padding:15px;
+    text-align:left;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>AI Code Reviewer</h2>
+
+<p>Paste your code below</p>
+
+<textarea id="codeInput" placeholder="Paste your code here..."></textarea>
+
+<br>
+
+<button onclick="reviewCode()">Review Code</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function reviewCode(){
+
+let code = document.getElementById("codeInput").value;
+
+if(code.trim() === ""){
+    alert("Please enter code");
+    return;
+}
+
+let review = "Basic Review:\n\n";
+
+if(code.includes("var")){
+    review += "- Avoid using 'var', use 'let' or 'const'.\n";
+}
+
+if(code.length < 20){
+    review += "- Code seems too short.\n";
+}
+
+review += "- Consider adding comments.\n";
+review += "- Follow proper formatting.\n";
+
+document.getElementById("result").innerText = review;
+
+}
+
+</script>
+
+</body>
+</html>
